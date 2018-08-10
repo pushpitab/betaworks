@@ -1,5 +1,19 @@
 <template>
-  <div>
+<div>
+<!-- <div class="card">
+     <h5 class="card-header"> {{ msg }}</h5>
+     <div class="card-body" >
+
+    <p class="input-group">
+    <label for="block1chain1number" class="col-sm-1 control-label">Block:</label>
+    <span class="input-group-addon">#</span>
+    <input id="block1chain1number" type="number"
+        v-model="inputBlock"
+        v-on:input="updateHash"
+    class="form-control">
+    </p>
+  </div>
+</div> -->
     <!-- --------------------- START --------------------- -->
     <div class="container">
         <h1>{{ msg }}</h1>
@@ -47,7 +61,8 @@
                     <label for="identicon" class="col-sm-2 control-label">Identicon:</label>
                     <div class="col-sm-10">
                         <div id="identicon"></div>
-                        <div id="roundIcon" class="identicon"></div>
+                        <div id="roundIcon" class="identicon"
+                        :style="{ backgroundImage: `url('${srcURL}')` }"></div>
                     </div>
                 </div>
 
@@ -58,7 +73,6 @@
                     <div class="col-sm-10">
                         <button id="block1chain1mineButton" data-style="expand-right" 
                         class="btn btn-primary ladda-button"
-                    
                         v-on:click="processMine">
                             <span class="ladda-label">Mine</span>
                         </button>
@@ -87,11 +101,11 @@ export default {
       activeClass:'well-success',
       errorClass:'well-error',
       isActive:true,
-      hashValue:''
+      hashValue:'',
+      srcURL:''
     }
   },
   created:function(){
-      
         this.processMine();
   },
   computed:{
@@ -115,9 +129,7 @@ export default {
       //document.getElementById('block1chain1hash').value = hash;
       this.hashValue=hash;
       // If you want rounded and diagonals
-      var roundIcon = document.getElementById('roundIcon');
-      roundIcon.style.backgroundImage = 'url(' + hqx(blockies.create({ seed:hash ,size: 8,scale: 3}),4).toDataURL()+')';
-            
+      this.srcURL=hqx(blockies.create({ seed: this.hashValue ,size: 8,scale: 3}),4).toDataURL();      
     },
     processMine: function() {
         console.log("\n\n!!!!!!processMine ");     
@@ -135,6 +147,8 @@ export default {
         console.log("BLOCK MINED: " + this.hashValue);
         this.inputNonce=nonce;
         this.isActive=true;
+        this.srcURL=hqx(blockies.create({ seed: this.hashValue ,size: 8,scale: 3}),4).toDataURL();
+    
     },
     calculateHash:function(nonce){
         var value = this.inputBlock+nonce+this.inputBlockData;
