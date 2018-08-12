@@ -1,6 +1,7 @@
 <template>
 <div>
-<!-- <div class="card">
+ <div class="card" >
+     <div  v-bind:class="setColor" >
      <h5 class="card-header"> {{ msg }}</h5>
      <div class="card-body" >
 
@@ -12,8 +13,9 @@
         v-on:input="updateHash"
     class="form-control">
     </p>
+    </div>
   </div>
-</div> -->
+</div> 
     <!-- --------------------- START --------------------- -->
     <div class="container">
         <h1>{{ msg }}</h1>
@@ -102,7 +104,9 @@ export default {
       errorClass:'well-error',
       isActive:true,
       hashValue:'',
-      srcURL:''
+      srcURL:'',
+      bgColorSucess:'bg-success',
+      bgColorErroe:'bg-danger'
     }
   },
   created:function(){
@@ -115,6 +119,14 @@ export default {
         return this.activeClass
         else{
              return this.errorClass
+        }
+    },
+    setColor:function(){
+        console.log("setColor computed");
+        if(this.isActive)
+        return this.bgColorSucess
+        else{
+             return this.bgColorErroe
         }
     }
   },
