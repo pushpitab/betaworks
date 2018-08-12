@@ -3,6 +3,9 @@
     <!-- --------------------- START --------------------- -->
     <div class="container">
 
+          <!-- Navigation -->
+          <Navigation/>          
+
           <!-- card start -->
           <div class="card bg-light mb-3">
             <h5 class="card-header">{{ msg }}</h5>
@@ -44,12 +47,18 @@
 </template>
 
 <script>
+
+import Navigation from '@/components/blockchain/basics/Navigation.vue'
+
 export default {
   name: 'Hash',
+  components: {
+      Navigation
+  },
   data: function() {
     return {
       msg: 'Basics: SHA256 Hash',
-      inputData: ''      
+      inputData: ''
     }
   },
   methods : {
