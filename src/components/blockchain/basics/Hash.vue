@@ -3,9 +3,6 @@
     <!-- --------------------- START --------------------- -->
     <div class="container">
 
-          <!-- Navigation -->
-          <Navigation/>          
-
           <!-- card start -->
           <div class="card bg-light mb-3">
             <h5 class="card-header">{{ msg }}</h5>
@@ -48,13 +45,8 @@
 
 <script>
 
-import Navigation from '@/components/blockchain/basics/Navigation.vue'
-
 export default {
   name: 'Hash',
-  components: {
-      Navigation
-  },
   data: function() {
     return {
       msg: 'Basics: SHA256 Hash',
@@ -87,6 +79,11 @@ export default {
       // create identicon for empty input
       var roundIcon = document.getElementById('roundIcon');
       roundIcon.style.backgroundImage = 'url(' + hqx(blockies.create({ seed:hash ,size: 8,scale: 3}),4).toDataURL()+')';
+
+      // path
+      console.log('------------ START ------------');
+      console.log(this.$route);
+      console.log('------------ START ------------');      
   }    
 
 }

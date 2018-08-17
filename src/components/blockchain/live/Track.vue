@@ -1,7 +1,5 @@
 <template>
   <div class="hello">
-
-    <h1>chain.vue</h1>
-
+    <h1>track.vue</h1>
   </div>
 </template>

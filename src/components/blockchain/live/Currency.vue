@@ -1,7 +1,5 @@
 <template>
   <div class="hello">
-
-    <h1>chain.vue</h1>
-
+    <h1>currency.vue</h1>
   </div>
 </template>
