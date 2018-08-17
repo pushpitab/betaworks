@@ -2,13 +2,12 @@ import Vue    from 'vue'
 import Router from 'vue-router'
 import Home               from './views/Home.vue'
 import Blockchain         from './views/Blockchain.vue'
-import BlockchainLanding  from './views/BlockchainLanding.vue'
 import Cybersecurity      from './views/Cybersecurity.vue'
 import AI                 from './views/AI.vue'
 import Cloud              from './views/Cloud.vue'
 
-// blockchain navigation menu
-import BlockchainMenu     from './components/blockchain/Menu.vue'
+// blockchain section landing page
+import LandingPage     from './components/blockchain/LandingPage.vue'
 
 // blockchain basics components
 import Block              from './components/blockchain/basics/Block.vue'
@@ -40,14 +39,6 @@ export default new Router({
       component: Home
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    },
-    {
       path: '/blockchain',
       name: 'blockchain',
       component: Blockchain,
@@ -73,8 +64,8 @@ export default new Router({
           component: Hash
         },
         {
-          path: 'menu',
-          component: BlockchainMenu
+          path: 'landingPage',
+          component: LandingPage
         },
         {
           path: 'tokens',
@@ -114,11 +105,6 @@ export default new Router({
         }
       ]
     },
-    {
-      path: '/blockchainLanding',
-      name: 'blockchainLanding',
-      component: BlockchainLanding
-    },    
     {
       path: '/cybersecurity',
       name: 'cybersecurity',

@@ -13,7 +13,7 @@
             <a class="nav-link" href="/#/">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item" v-bind:class="{ active: navItems.BlockchainIsActive }">
-            <a class="nav-link" href="/#/blockchain/menu">Blockchain <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/#/blockchain/landingPage">Blockchain <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item" v-bind:class="{ active: navItems.CybersecurityIsActive }">
             <a class="nav-link" href="/#/cybersecurity">Cybersecurity</a>

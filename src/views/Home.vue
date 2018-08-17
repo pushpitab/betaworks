@@ -7,7 +7,7 @@
     
               <ul class="list-group list-group-flush">
                 <li class="list-group-item bg-light">
-                    <a href="/#/blockchain/menu">
+                    <a href="/#/blockchain/landingPage">
                       <h1 style="color:#4674c1;">Blockchain</h1>
                     </a>
                 </li>
