@@ -2,29 +2,40 @@
   <div>
     <!-- --------------------- START --------------------- -->
     <div class="container">
-        <h1>{{ msg }}</h1>
-        <div id="well1" class="well">
+
+          <!-- card start -->
+          <div class="card bg-light mb-3">
+            <h5 class="card-header">{{ msg }}</h5>
+            <div class="card-body">
+
+            <!-- form start -->
             <form class="form-horizontal">
                 <div class="form-group">
-                    <label for="data" class="col-sm-2 control-label">Data:</label>
-                    <div class="col-sm-10">
+                    <label for="data" class="control-label">Data:</label>
+                    <div>
                         <textarea id="credit-limit-input" rows="10" v-model="inputData" v-on:input="processInputData" class="form-control"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="hash" class="col-sm-2 control-label">Hash:</label>
-                    <div class="col-sm-10">
+                    <label for="hash" class="control-label">Hash:</label>
+                    <div>
                         <input id="hash" type="text" disabled class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="identicon" class="col-sm-2 control-label">Identicon:</label>
-                    <div class="col-sm-10">
+                    <label for="identicon" class="control-label">Identicon:</label>
+                    <div>
                         <div id="identicon"></div>
                         <div id="roundIcon" class="identicon"></div>
                     </div>
                 </div>
             </form>
+            <!-- form end -->
+
+            </div>
+          </div>
+          <!-- card end -->
+
         </div>
     </div>
     <!-- --------------------- END --------------------- -->
@@ -33,6 +44,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'Hash',
   data: function() {
@@ -43,21 +55,35 @@ export default {
   },
   methods : {
     processInputData : function(data){
-      console.log(data);
-      console.log(data.srcElement);
-      console.log(data.srcElement.value);      
+      // console.log(data);
+      // console.log(data.srcElement);
+      // console.log(data.srcElement.value);      
       var value = data.srcElement.value;
       var hash = CryptoJS.SHA256(value).toString();
-      console.log(hash);
+      //console.log(hash);
       document.getElementById('hash').value = hash;
 
-      // If you want rounded and diagonals
+      // create identicon
+      var roundIcon = document.getElementById('roundIcon');
+      roundIcon.style.backgroundImage = 'url(' + hqx(blockies.create({ seed:hash ,size: 8,scale: 3}),4).toDataURL()+')';
+    }
+  },
+  mounted: function () {
+      //console.log('in mounted');
+      var empty = '';
+      var hash = CryptoJS.SHA256(empty).toString();
+      //console.log(hash);
+      document.getElementById('hash').value = hash;
+
+      // create identicon for empty input
       var roundIcon = document.getElementById('roundIcon');
       roundIcon.style.backgroundImage = 'url(' + hqx(blockies.create({ seed:hash ,size: 8,scale: 3}),4).toDataURL()+')';
 
-
-    }
-  }
+      // path
+      //console.log('------------ START ------------');
+      //console.log(this.$route);
+      //console.log('------------ START ------------');      
+  }    
 
 }
 </script>
